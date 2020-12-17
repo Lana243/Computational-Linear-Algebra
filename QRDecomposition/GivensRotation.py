@@ -1,6 +1,9 @@
 import numpy as np
 
 
+EPS = 10**(-5)
+
+
 def GivensRotation(A, i, j, c, s):
     u = c * A[i, ...] + s * A[j, ...]
     v = -s * A[i, ...] + c * A[j, ...]
@@ -18,7 +21,7 @@ def QRDecomposition(n, A):
                        # decompostition elements are Givens matrixes
     for i in range(n):
         for j in range(i + 1, n):
-            if (R[j, i] == 0):
+            if abs(R[j, i]) < EPS:
                 continue
             c = R[i, i] / ((R[i, i] ** 2 + R[j, i] ** 2) ** 0.5)
             s = R[j, i] / ((R[i, i] ** 2 + R[j, i] ** 2) ** 0.5)

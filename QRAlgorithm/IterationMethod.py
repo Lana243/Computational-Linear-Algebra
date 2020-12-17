@@ -28,3 +28,5 @@ def user():
     l, v = iterationMethod(A, x0, eps)
     print(l)
     print(v)
+
+user()
